@@ -1,1 +1,78 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nohith’s Rise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: white;
+      font-family: 'Cinzel', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      transition: background 1s ease;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .container {
+      text-align: center;
+      font-size: 2.5rem;
+      opacity: 1;
+      transition: opacity 1s ease;
+      max-width: 90%;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: none;
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+      animation: popIn 1s ease forwards;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body onclick="nextScene()">
+  <div class="container" id="content">Didn’t get IIM Raipur?</div>
+  <img id="iimImage" src="iim_a_nohith.jpg" alt="IIM A with Nohith" />
+
+  <script>
+    let stage = 0;
+
+    function nextScene() {
+      const content = document.getElementById("content");
+      const img = document.getElementById("iimImage");
+
+      if (stage === 0) {
+        content.style.opacity = 0;
+        setTimeout(() => {
+          content.innerHTML = "So what? Their loss.";
+          content.style.opacity = 1;
+          stage++;
+        }, 1000);
+      } else if (stage === 1) {
+        content.style.opacity = 0;
+        document.body.style.background = "#fff";
+        setTimeout(() => {
+          content.style.display = "none";
+          img.style.display = "block";
+        }, 1000);
+        stage++;
+      }
+    }
+  </script>
+</body>
+</html>
